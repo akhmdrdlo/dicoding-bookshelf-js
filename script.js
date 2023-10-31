@@ -5,13 +5,13 @@ function generatedId(){
     return +new Date();
 }
 
-function generateBukuObject(id, title, author,year, isCompleted) {
+function generateBukuObject(id, title, author,year, isComplete) {
     return {
       id,
       title,
       author,
       year,
-      isCompleted
+      isComplete
     }
 }
 
@@ -34,7 +34,7 @@ function findIndexBuku(bukuId){
 }
 
 function makeBuku(bukuObject){
-    const {id, title, author, year, isCompleted} = bukuObject;
+    const {id, title, author, year, isComplete} = bukuObject;
     const judulTeks = document.createElement('h3');
     judulTeks.innerText = title;
 
@@ -54,7 +54,7 @@ function makeBuku(bukuObject){
     container.append(textContainer);
     container.setAttribute('id', `buku-${id}`);
 
-    if (isCompleted){
+    if (isComplete){
         const tombolUndo = document.createElement('button');
         tombolUndo.classList.add('undo');
         tombolUndo.innerText='Belum Dibaca Deh!!';
@@ -94,8 +94,9 @@ function addBuku()  {
     const judulTeks = document.getElementById('title').value;
     const authorTeks = document.getElementById('author').value;
     const tahunTeks = document.getElementById('year').value;
+    const tahun = parseInt(tahunTeks);
     const generatedID = generatedId();
-    const bukuObject = generateBukuObject(generatedID, judulTeks, authorTeks, tahunTeks, false);
+    const bukuObject = generateBukuObject(generatedID, judulTeks, authorTeks, tahun, false);
     bookshelf.push(bukuObject);
     document.dispatchEvent(new Event(RENDER_EVENT));
     saveData();
@@ -105,7 +106,7 @@ function addBuku()  {
 function bacaBuku(bukuId){
     const bukuTarget = findBuku(bukuId);
     if (bukuTarget == null)return;
-    bukuTarget.isCompleted = true;
+    bukuTarget.isComplete = true;
     document.dispatchEvent(new Event(RENDER_EVENT));
     saveData();
     alert("Buku "+bukuTarget.title+" berhasil di tambahkan ke bagian Sudah Dibaca!!");
@@ -127,7 +128,7 @@ function hapusBukuSelesai(bukuId){
 function undoBukuSelesai(bukuId){
     const bukuTarget = findBuku(bukuId);
     if (bukuTarget == null)return;
-    bukuTarget.isCompleted = false;
+    bukuTarget.isComplete = false;
     document.dispatchEvent(new Event(RENDER_EVENT));
     saveData();
     alert("Buku "+bukuTarget.title+" berhasil di kembalikan ke Belum Dibaca!!");
@@ -147,13 +148,15 @@ cariBuku.addEventListener('keyup', function() {
 const cariJudul = document.getElementById('cariJudul').value;
 const filterCari = bookshelf.filter(buku => buku.title.toLowerCase().includes(cariJudul.toLowerCase()));
 if (filterCari.length === 0) {
+    document.getElementById('bookshelf').innerHTML = '';
+    document.getElementById('buku-selesai').innerHTML = '';
     alert('Tidak ada buku yang ditemukan!');
 } else {
     document.getElementById('bookshelf').innerHTML = '';
     document.getElementById('buku-selesai').innerHTML = '';
     for (const buku of filterCari) {
         const bukuElement = makeBuku(buku);
-        if(buku.isCompleted){
+        if(buku.isComplete){
             document.getElementById('buku-selesai').append(bukuElement);
         }else{
             document.getElementById('bookshelf').append(bukuElement);
@@ -170,7 +173,7 @@ document.addEventListener(RENDER_EVENT, function () {
   
     for (const bukuItem of bookshelf) {
       const bukuElement = makeBuku(bukuItem);
-      if (bukuItem.isCompleted) {
+      if (bukuItem.isComplete) {
         listBukuSelesai.append(bukuElement);
       } else {
         listBukuBelumSelesai.append(bukuElement);
