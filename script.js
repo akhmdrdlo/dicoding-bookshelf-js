@@ -71,13 +71,19 @@ function makeBuku(bukuObject){
 
         container.append(tombolUndo,tombolHapus)
     } else {
+        const tombolHapus = document.createElement('button');
+        tombolHapus.classList.add('hapus');
+        tombolHapus.innerText='Hapus Bacaan..';
+        tombolHapus.addEventListener('click', function(){
+            hapusBukuSelesai(id);
+        });
         const tombolBaca = document.createElement('button');
         tombolBaca.classList.add('baca');
         tombolBaca.innerText='Sudah Dibaca!!';
         tombolBaca.addEventListener('click', function(){
             bacaBuku(id);
         });
-        container.append(tombolBaca);
+        container.append(tombolHapus,tombolBaca);
     }
     const garisContainer = document.createElement('hr');
     container.append(garisContainer);
