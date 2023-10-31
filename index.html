@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madoka Bookshelf Apps!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body id="content">
+    <header>
+        <div class="header">
+            <h1>Madoka Bookshelf</h1>
+            <p style="margin-top:-20px; font-weight: lighter; letter-spacing: 2px;">Aplikasi simpel untuk menyusun Booklist kamu!!</p>
+        </div>
+    </header>
+    <div class="aside">
+        <div class="container">
+            <div class="card">
+                <form action="#" id="form" class="form">
+                    <h2 style="text-align: center;">Lagi Baca Buku Baru?</h2>        
+                    <label for="title">Judul Buku </label><br>     
+                    <input type="text" name="title" id="title" placeholder="Masukkan Judul Buku yang kamu baca...">
+                    <br>
+                    <label for="author">Nama Penulis</label><br>
+                    <input type="text" name="author" id="author" placeholder="Masukkan Siapa Penulisnya....">
+                    <br>
+                    <label for="year">Tahun Terbit</label><br>
+                    <input type="text" name="year" id="year" placeholder="Masukkan Tahun Terbitnya....">
+                    <br>
+                    <input type="submit" value="Tambahkan ke List Belum Dibaca" name="submit" id="submit">
+                </form>
+            </div>
+        </div>
+        <div class="container">
+            <div class="card">
+                <form action="#" class="form" style="text-align: center;">
+                    <label for="cariJudul">Mencari Judul Buku??</label>
+                    <input type="search" name="cariJudul" id="cariJudul" placeholder="Cari Judul Bukunya...">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="list-buku">
+        <div class="container" style="margin-top: 20px;">
+            <div class="card">
+                <h2 style="text-align: center;">Buku-buku yang belum dibaca!!</h2>
+                <div class="list-buku" id="bookshelf"></div>
+            </div>
+        </div>
+    
+        <div class="container" style="margin-top: 20px;">
+            <div class="card">
+                <h2 style="text-align: center;">Buku-buku yang udah dibaca!!</h2>
+                <div class="list-buku" id="buku-selesai"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="devstat">
+            Developed by Akhmad Ridlo Rifa'i
+        </div>
+        <div class="sosmed">
+            <ul>
+                <li><a href="https://www.instagram.com/akhmdrdlo/" target="_blank">Instagram</a></li>
+                <li><a href="https://www.linkedin.com/in/akhmdrdlo" target="_blank">LinkedIn</a></li>
+                <li><a href="https://github.com/akhmdrdlo" target="_blank">Github</a></li>
+                <li><a href="https://akhmdrdlo.github.io/portfolio" target="_blank">My Portfolio</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
