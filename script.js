@@ -24,7 +24,7 @@ function findBuku(bukuId){
     return null;
 }
 
-function findIndexBuku(bukuId){
+    function findIndexBuku(bukuId){
     for (const index in bookshelf){
         if (bookshelf[index].id === bukuId){
             return index;

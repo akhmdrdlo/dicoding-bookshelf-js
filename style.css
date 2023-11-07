@@ -143,16 +143,17 @@ body{
 }
 
 .footer {
-    position:sticky;
+    width: 100%;
+    position: static;
     display: flex;
     justify-content: space-between;
-    padding: 25px 25px 5px 25px;
-    margin:3% auto auto auto;
+    padding-top: 20px;
     background-color: rgb(20, 38, 141);
     color: white;
 }
 
 .devstat {
+    padding-left: 2%;
     max-width: 100%;
     align-items: center;
     flex: 1;
